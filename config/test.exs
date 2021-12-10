@@ -18,7 +18,7 @@ config :app, App.Repo,
 config :app, AppWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "il3Pj9idgSflFMJjXktvgcKtcXKioRxWA0ZmX8qB4IpJ/+1aGm9tL5EcWRsMJyvB",
-  server: false
+  server: true
 
 # In test we don't send emails.
 config :app, App.Mailer, adapter: Swoosh.Adapters.Test
@@ -28,3 +28,5 @@ config :logger, level: :warn
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :app, :sandbox, Ecto.Adapters.SQL.Sandbox

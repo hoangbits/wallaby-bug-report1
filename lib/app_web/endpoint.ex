@@ -12,6 +12,10 @@ defmodule AppWeb.Endpoint do
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
+  if sandbox = Application.get_env(:your_app, :sandbox) do
+    plug Phoenix.Ecto.SQL.Sandbox, sandbox: sandbox
+  end
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phx.digest
